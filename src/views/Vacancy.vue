@@ -149,7 +149,6 @@ export default {
     };
   },
   created() {
-    console.log("PARAMS", this.$route.params.id);
     // this.$store.dispatch("getVacancy", this.$route.params.id).then(res => {
     //   this.vacancy = res.data;
     // });
@@ -165,6 +164,8 @@ export default {
         }
       });
     });
+
+    window.scrollTo(0, 0);
   },
   // beforeRouteEnter(to, from, next) {
   //   console.log("beforeRouteEnter: ", to);
@@ -176,7 +177,7 @@ export default {
   //   });
   // },
   beforeRouteUpdate(to, from, next) {
-    console.log("Routes: ", to, from, next);
+    // console.log("Routes: ", to, from, next);
     this.$store.dispatch("getVacancy", to.params.id).then(res => {
       this.vacancy = res.data;
     });

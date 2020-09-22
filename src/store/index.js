@@ -29,19 +29,11 @@ export default new Vuex.Store({
   },
 
   actions: {
-    // getVacanciesList() {
-    //   api.get("vacancies").then(res => {
-    //     console.log("HURRAY!!: ", res);
-    //   });
-    // },
-
     getVacancy({ commit, dispatch }, id) {
       return new Promise((resolve, reject) => {
-        console.log("STORE ID", id);
         api
           .get(`vacancies/${id}`)
           .then(res => {
-            console.log(`Vacancy with ID ${id} : `, res);
             commit("setCurrentVacancy", res.data);
             dispatch("getRelatedVacancies", res.data.id);
             resolve(res);
@@ -57,7 +49,6 @@ export default new Vuex.Store({
       for (let i in querySet) {
         query += i + "=" + querySet[i] + "&";
       }
-      console.log("QUERY", query);
       return new Promise((resolve, reject) => {
         api
           .get(`vacancies?clusters=true&${query}`)

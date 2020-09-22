@@ -129,7 +129,6 @@ export default {
   created() {
     this.fetchData();
     this.matchFilters(this.$route.query);
-    console.log("created");
   },
   watch: {
     query() {
@@ -159,7 +158,6 @@ export default {
   },
   // beforeRouteUpdate(to, from, next) {
   //   this.fetchData();
-  //   console.log("to", to);
   //   this.matchFilters(to.query);
 
   //   next();
@@ -181,14 +179,12 @@ export default {
       this.$router.push({ path: "search?", query: newQuery });
     },
     matchFilters(query) {
-      console.log("QUERY BEFORE ", query);
       if (query["order_by"]) {
         this.orderBy = query["order_by"];
       }
       if (query["period"]) {
         this.period = query["period"];
       }
-      console.log("QUERY AFTER ", query);
     }
   }
 };
@@ -225,6 +221,10 @@ export default {
     display: flex;
     margin-bottom: 20px;
 
+    @media (max-width: 699px) {
+      padding: 0 15px;
+    }
+
     &-item {
       background: #ededed;
       border: 1px solid;
@@ -249,6 +249,10 @@ export default {
 
   .search-filters {
     margin-bottom: 25px;
+
+    @media (max-width: 699px) {
+      padding: 0 15px;
+    }
 
     &-item {
       margin-right: 10px;

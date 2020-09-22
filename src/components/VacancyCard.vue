@@ -51,9 +51,6 @@ export default {
       default: () => {}
     }
   },
-  created() {
-    // console.log("Vacancy: ", this.vacancy);
-  },
   computed: {
     getSalary() {
       let salary = this.vacancy.salary;
